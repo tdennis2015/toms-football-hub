@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tom’s Football Hub</title>
+  <style>
+    body { background: #fff; color: #000; font-family: 'Roboto', sans-serif; margin: 0; padding: 0; }
+    .header { text-align: center; padding: 20px; border-bottom: 3px solid lightblue; }
+    nav { background: #f9f9f9; padding: 10px; text-align: center; border-bottom: 1px solid #ddd; }
+    nav a { margin: 0 15px; text-decoration: none; color: #000; font-weight: bold; }
+    nav a:hover { color: lightblue; }
+    section { padding: 20px; color: #000; }
+    h2 { color: #000; border-bottom: 2px solid lightblue; padding-bottom: 5px; }
+    .card { margin-bottom: 15px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background: #fdfdfd; color: #000; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    table, th, td { border: 1px solid #ddd; }
+    th, td { padding: 8px; text-align: left; }
+    .footer { text-align: center; padding: 15px; border-top: 1px solid #ddd; font-size: 0.9em; color: #000; }
+    .navlist { margin-top: 15px; text-align: center; }
+    .navlist a { display: block; margin: 5px 0; color: black; text-decoration: none; }
+    .navlist a:hover { color: lightblue; }
+    .logo { width: 24px; vertical-align: middle; margin-right: 6px; }
+    #news { background-color: lightgreen; }
+    #transfers { background-color: lightyellow; }
+    #scores { background-color: pink; }
+  </style>
+  <script>
+    async function loadLiveScores() {
+      try {
+        // Placeholder example: replace with actual live score API endpoint
+        const response = await fetch('https://api.example.com/football/scores');
+        const data = await response.json();
+        const tableBody = document.getElementById('liveScoresBody');
+        tableBody.innerHTML = '';
+        data.matches.forEach(match => {
+          const row = document.createElement('tr');
+          row.innerHTML = `<td>${match.date}</td><td><img src="${match.homeLogo}" class="logo">${match.home} vs <img src="${match.awayLogo}" class="logo">${match.away}</td><td>${match.score}</td>`;
+          tableBody.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Error loading live scores:', error);
+      }
+    }
+    window.onload = loadLiveScores;
+  </script>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Tom’s Football Hub</h1>
+  </div>
+
+  <nav>
+    <a href="#news">News</a>
+    <a href="#transfers">Transfers</a>
+    <a href="#scores">Scores</a>
+  </nav>
+
+  <section id="news">
+    <h2>Latest News</h2>
+    <div class="card">
+      <strong>Brentford confirm Yoane Wissa replacement</strong>
+      <p><img src="https://upload.wikimedia.org/wikipedia/en/2/2a/Brentford_FC_crest.svg" class="logo"> Brentford have signed Dango Ouattara from Bournemouth for a club record fee, which could trigger a £150m transfer domino. <a href="https://talksport.com/football/3456155/brentford-transfer-dango-ouattara-yoane-wissa-alexander-isak/?utm_source=chatgpt.com" target="_blank">Read more</a></p>
+    </div>
+  </section>
+
+  <section id="transfers">
+    <h2>Transfers</h2>
+    <div class="card">
+      <strong>Tottenham close in on Eberechi Eze</strong>
+      <p><img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg" class="logo"> Tottenham are close to signing Eberechi Eze from Crystal Palace as Thomas Frank provides an update. <a href="https://talksport.com/football/3472850/tottenham-eberechi-eze-bid-crystal-palace/?utm_source=chatgpt.com" target="_blank">Read more</a></p>
+    </div>
+  </section>
+
+  <section id="scores">
+    <h2>Scores & Fixtures</h2>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Match</th><th>Score</th></tr>
+      </thead>
+      <tbody id="liveScoresBody">
+        <tr>
+          <td>16 Aug 2025</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/en/0/02/SunderlandAFCLogo.svg" class="logo"> Sunderland vs <img src="https://upload.wikimedia.org/wikipedia/en/c/c2/West_Ham_United_FC_logo.svg" class="logo"> West Ham</td>
+          <td>3 – 0</td>
+        </tr>
+        <tr>
+          <td>16 Aug 2025</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg" class="logo"> Tottenham vs <img src="https://upload.wikimedia.org/wikipedia/en/0/02/Burnley_FC_badge.png" class="logo"> Burnley</td>
+          <td>3 – 0</td>
+        </tr>
+        <tr>
+          <td>16 Aug 2025</td>
+          <td><img src="https://upload.wikimedia.org/wikipedia/en/f/fd/Brighton_and_Hove_Albion_logo.svg" class="logo"> Brighton vs <img src="https://upload.wikimedia.org/wikipedia/en/1/13/Fulham_FC.svg" class="logo"> Fulham</td>
+          <td>1 – 1</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><a href="https://www.theguardian.com/football/live/2025/aug/16/brighton-v-fulham-tottenham-v-burnley-sunderland-v-west-ham-and-more-clockwatch-live?utm_source=chatgpt.com" target="_blank">Full clockwatch coverage</a></p>
+  </section>
+
+  <div class="navlist">
+    <h2>Quick Links</h2>
+    <a href="https://talksport.com/football/3456155/brentford-transfer-dango-ouattara-yoane-wissa-alexander-isak/?utm_source=chatgpt.com" target="_blank">Brentford confirm Yoane Wissa replacement</a>
+    <a href="https://talksport.com/football/3472850/tottenham-eberechi-eze-bid-crystal-palace/?utm_source=chatgpt.com" target="_blank">Tottenham close in on Eberechi Eze</a>
+    <a href="https://www.theguardian.com/football/live/2025/aug/16/brighton-v-fulham-tottenham-v-burnley-sunderland-v-west-ham-and-more-clockwatch-live?utm_source=chatgpt.com" target="_blank">Match clockwatch coverage</a>
+  </div>
+
+  <div class="footer">
+    © 2025 Tom’s Football Hub
+  </div>
+
+</body>
+</html>
